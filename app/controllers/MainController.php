@@ -44,6 +44,10 @@ class MainController extends Controller {
 	}
 
 	public function editAction() {
+
+		$films = $this->model->getFilms();
+		$actors = $this->model->getActors();
+		$formats = $this->model->getFormats();
 		
 		if($_POST['button'] == 'update') {
 			$film = [];
@@ -51,10 +55,6 @@ class MainController extends Controller {
 						'set' => '',
 						'where' => ''];
 			$params = [];
-
-			$films = $this->model->getFilms();
-			$actors = $this->model->getActors();
-			$formats = $this->model->getFormats();
 
 			foreach($films as $item) {
 				if($item['id'] == $_POST['film_id']) {
@@ -141,9 +141,12 @@ class MainController extends Controller {
 			$this->model->delete($_POST['film_id']);
 		}
 
-		if($_POST['button'] == 'delete_actor') {
-			$this->model->deleteActor($_POST['delete_actor']);
+		foreach($actors as $actor) {
+			if($_POST['button'] == 'delete_actor_'.$actor['id']) {
+				$this->model->deleteActor($actor['id']);
+			}
 		}
+		
 
 		$this->view->redirect();
 		

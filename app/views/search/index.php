@@ -73,7 +73,7 @@
 										<div class="row">
 											<div class="col-6 offset-3">
 												<input type="number" value="<?php echo $actor['id'] ?>" name="delete_actor" hidden>
-												<button type="submit" class="btn btn-sm btn-block btn-outline-danger mr-auto m-1" name="button" value="delete_actor">Delete</button>
+												<button type="submit" class="btn btn-sm btn-block btn-outline-danger mr-auto m-1" name="button" value="delete_actor_<?php echo $actor['id'] ?>">Delete</button>
 											</div>
 										</div>
 										<hr>
